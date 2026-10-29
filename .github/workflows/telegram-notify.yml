@@ -1,0 +1,28 @@
+name: Telegram Notification
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    steps:
+      - name: Send Telegram Message
+        if: ${{ env.TELEGRAM_BOT_TOKEN != '' }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: "-1003966601591"
+          token: ${{ env.TELEGRAM_BOT_TOKEN }}
+          message_thread_id: "3"
+          format: markdown # ជួយឱ្យ Telegram ង្ហាញ Formatting (Bold/Code) បានត្រឹមត្រូវ
+          message: |
+            📦 **New Push Event**
+            📂 **Repository:** ${{ github.repository }}
+            🌿 **Branch:** `${{ github.ref_name }}`
+            👤 **Committer:** ${{ github.actor }}
+            💬 **Message:** ${{ github.event.head_commit.message }}
+            🔗 **Commit URL:** ${{ github.event.head_commit.url }}

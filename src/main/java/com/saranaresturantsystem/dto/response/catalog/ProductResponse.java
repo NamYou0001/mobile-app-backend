@@ -1,0 +1,41 @@
+package com.saranaresturantsystem.dto.response.catalog;
+
+import com.saranaresturantsystem.dto.response.common.BaseEntityResponse;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@SuperBuilder
+public class ProductResponse extends BaseEntityResponse {
+    private Long id;
+    private String code;
+    private String name ;
+    private BigDecimal costPrice ;
+    private  BigDecimal salePrice ;
+    private BigDecimal totalPrice;
+    private BigDecimal totalSale;
+    private BigDecimal profit;
+    private String noted;
+    private String imageUrl;
+    private String status;
+    private Boolean hasSerial;
+    private Integer reorderLevel;
+    private  BigDecimal qty ;
+
+    private Long modelId;
+    private String modelName;
+    private  Long brandId;
+    private String brandName;
+    private Long categoryId;
+    private String categoryName;
+    private List<VariantValueResponse> variantValues;
+}

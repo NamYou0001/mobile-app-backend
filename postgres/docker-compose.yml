@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: always
+    container_name: 360-service
+    ports:
+      - "54340:5432"
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=phone_shop_db
+    networks:
+      - 360-phone-shop-service
+
+networks:
+  360-phone-shop-service:
+    name: 360-phone-shop-service
